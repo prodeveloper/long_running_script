@@ -2,8 +2,10 @@
 require_once 'helpers.php';
 require_once 'model.php';
 /**
- *
+ * @author Chencha Jacob Gisore
+ * @link www.chenchatech.com
  */
+
 class Queue_manager  {
     //Write the path to your worker here
     static $path_to_worker='http://localhost/blog/long_running/worker.php';

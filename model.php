@@ -1,4 +1,8 @@
 <?
+/**
+ * @author Chencha Jacob Gisore
+ * @link www.chenchatech.com
+ */
 
 /**
  *This will handle the data model

@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Chencha Jacob Gisore
+ * @link www.chenchatech.com
+ */
+
 require_once 'queue_manager.php';
 require_once 'helpers.php';
 
