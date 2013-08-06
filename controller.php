@@ -8,13 +8,16 @@ $progress = isset($_GET['progress']) ? $_GET['progress'] : FALSE;
 //Request not specified return bad request
 if (!$request) {
     $response = "No request provided";
-
     return_value($response, 400);
     die();
 }
 //Act if user requested progress information
 if ($progress) {
     $curr_progress = $controller -> check_progress($request);
+    //Return resouce if we are finished processing
+    if($curr_progress=='Complete'){
+        $curr_progress=$controller->get_resource($request);
+    }
     return_value($curr_progress, 200);
 }
 //Add job to queue
@@ -27,7 +30,7 @@ else {
 /**
  *
  */
-class Controller {
+class Controller extends Queue_manager{
 
     function __construct() {
 
@@ -38,7 +41,10 @@ class Controller {
      * @param {String} $request
      */
     function check_progress($request) {
-        return Queue_manager::progress($request);
+        return self::progress($request);
+    }
+    function get_resource($request){
+        return self::get_resource($request);
     }
 
     /**
@@ -46,7 +52,7 @@ class Controller {
      * @param {String} $request
      */
     function queue($request) {
-        Queue_manager::add($request);
+        self::add($request);
         return TRUE;
     }
 
